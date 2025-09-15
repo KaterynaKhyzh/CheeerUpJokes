@@ -1,0 +1,76 @@
+﻿<Window x:Class="CheeerUpJokes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheeerUpJokes"
+        mc:Ignorable="d"
+         Title="Cheer Up with a Joke!" Height="500" Width="600">
+    
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FFD9ECFF" Offset="0"/>
+            <GradientStop Color="#FFFFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <StackPanel Margin="20" VerticalAlignment="Top">
+
+        <TextBlock Text="Don't be sad! Here's your punchline for today:" 
+                   FontSize="20" FontWeight="Bold" 
+                   TextAlignment="Center" Margin="0,0,0,20"/>
+        
+        <Border x:Name="JokeBorder" Background="#FFF0B3" Padding="15" CornerRadius="10" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock x:Name="SetupTextBlock" FontSize="16" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                <TextBlock x:Name="PunchlineTextBlock" FontSize="16" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                <TextBlock x:Name="EmojiTextBlock" Text="😄" FontSize="24" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <Button Width="140" Height="50" HorizontalAlignment="Center" Click="GetJokeButton_Click" Margin="0,0,0,20" Content="Get a Joke" Cursor="Hand">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" 
+                    Background="{TemplateBinding Background}" 
+                    BorderBrush="{TemplateBinding BorderBrush}" 
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#FF80C3FF" Offset="0"/>
+                    <GradientStop Color="#FF3399FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.Foreground>White</Button.Foreground>
+            <Button.FontWeight>Bold</Button.FontWeight>
+            <Button.FontSize>16</Button.FontSize>
+            <Button.BorderThickness>0</Button.BorderThickness>
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FF3399FF" Offset="0"/>
+                                        <GradientStop Color="#FF0077FF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <ScrollViewer x:Name="HistoryScrollViewer" Height="200" VerticalScrollBarVisibility="Auto" Background="#FFF8E7">
+            <StackPanel x:Name="HistoryStackPanel"/>
+        </ScrollViewer>
+    </StackPanel>
+    
+</Window>
